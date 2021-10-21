@@ -1,3 +1,3 @@
-import { showTime } from "./js/calendar";
+import { handleTimeChanging } from "./js/calendar";
 
-showTime();
+handleTimeChanging();
