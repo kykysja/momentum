@@ -7,6 +7,7 @@ import { getCityFromLocalStorage } from "./js/weather";
 import { setCityToLocalStorage } from "./js/weather";
 import { setBackground } from "./js/bg-slider";
 import { getWeather } from "./js/weather";
+import { getQuote } from "./js/quotes-widget";
 
 const getDataFromLocalStorage = () => {
   getUserNameFromLocalStorage();
@@ -21,6 +22,7 @@ const handleWindowLoad = () => {
   getDataFromLocalStorage();
   getWeather();
   setBackground();
+  getQuote();
   handleTimeChanging();
 };
 
