@@ -8,6 +8,7 @@ import { setCityToLocalStorage } from "./js/weather";
 import { setBackground } from "./js/bg-slider";
 import { getWeather } from "./js/weather";
 import { getQuote } from "./js/quotes-widget";
+import { playAudio } from "./js/audio-player";
 
 const getDataFromLocalStorage = () => {
   getUserNameFromLocalStorage();
@@ -35,3 +36,6 @@ const handleTimeChanging = () => {
   showGreeting();
   setTimeout(handleTimeChanging, 1);
 };
+
+const playBtn = document.querySelector(".play");
+playBtn.addEventListener("click", playAudio);

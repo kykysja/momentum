@@ -11,7 +11,7 @@ export const setBackground = () => {
   const randomNumToString = String(randomNum).padStart(2, 0);
 
   const img = new Image();
-  img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${getTimeOfDay()}/${randomNumToString}.jpg`;
+  img.src = `https://raw.githubusercontent.com/kykysja/stage1-tasks/assets/images/${getTimeOfDay()}/${randomNumToString}.jpg`;
   img.onload = () => {
     body.style.backgroundImage = `url(${img.src})`;
   };

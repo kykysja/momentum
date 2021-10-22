@@ -18,7 +18,7 @@ export async function getQuote() {
     getQuote();
   } else {
     randomNum = newRandomNum;
-    const quotes = "../assets/data.json";
+    const quotes = "../assets/quotes.json";
     const res = await fetch(quotes);
     const data = await res.json();
 
