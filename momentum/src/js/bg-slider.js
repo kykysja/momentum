@@ -5,7 +5,7 @@ const body = document.body;
 const slideNextBtn = document.querySelector(".slide-next");
 const slidePrevBtn = document.querySelector(".slide-prev");
 
-let randomNum = getRandomNum(0, 20);
+let randomNum = getRandomNum(1, 20);
 
 export const setBackground = () => {
   const randomNumToString = String(randomNum).padStart(2, 0);

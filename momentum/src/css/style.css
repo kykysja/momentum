@@ -264,6 +264,7 @@ body {
   height: 30vh;
   min-height: 160px;
   padding: 20px;
+  position: relative;
 }
 
 .change-quote {
@@ -273,6 +274,7 @@ body {
 
 .quote {
   min-height: 32px;
+  padding: 0 60px 7px;
 }
 
 .author {
@@ -444,4 +446,92 @@ body {
 
 .volume-icon-mute {
   background-image: url("../assets/svg/mute.svg");
+}
+
+.settings-btn {
+  width: 32px;
+  height: 32px;
+  background-image: url("../assets/svg/settings.svg");
+  background-size: 100% 100%;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  transition-duration: 0.5s;
+}
+
+.settings-btn:hover {
+  transform: scale(1.1);
+}
+
+.settings-container {
+  width: 30%;
+  background-color: white;
+  border-radius: 7px;
+  padding: 15px;
+  color: black;
+  position: absolute;
+  bottom: 120px;
+  left: 44px;
+  z-index: 100;
+  visibility: hidden;
+  transition-duration: 0.1s;
+}
+
+.opened {
+  visibility: visible;
+  transform: scale(1.1);
+}
+
+.settings-title {
+  display: flex;
+  font-size: 28px;
+  font-weight: 700;
+}
+.setting-wrap {
+  display: flex;
+  margin-bottom: 10px;
+}
+.list-item {
+  padding: 8px;
+  padding-left: 0;
+}
+.settings-label {
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+.settings-radio-btn {
+}
+.widgets-wrap {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.checkbox-label {
+}
+.settings-checkbox {
+}
+.hidden {
+  opacity: 0;
+}
+
+#audio-player-widget,
+#weather-widget,
+#time-widget,
+#date-widget,
+#greeting-widget,
+#quotes-widget {
+  transition: all ease 0.5s;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.overlay-hidden {
+  display: none;
 }

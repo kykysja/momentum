@@ -131,5 +131,8 @@ export const setAudioPlayer = () => {
     audioPlayer.querySelector(".track-time .current").textContent = getTimeCodeFromNum(
       audio.currentTime,
     );
+    if (audio.currentTime === sounds[currentAudioNum].duration) {
+      playNextBtn.click();
+    }
   }, 500);
 };

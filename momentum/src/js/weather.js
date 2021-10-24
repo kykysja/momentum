@@ -37,7 +37,7 @@ export const setCityToLocalStorage = () => {
   localStorage.setItem("city", cityInput.value);
 };
 
-export const getCityFromLocalStorage = () => {
+export const useCityFromLocalStorage = () => {
   if (localStorage.getItem("city")) {
     cityInput.value = localStorage.getItem("city");
   } else {

@@ -24,3 +24,17 @@ export const getTimeCodeFromNum = (num) => {
   if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
   return `${String(hours).padStart(2, 0)}:${minutes}:${String(seconds % 60).padStart(2, 0)}`;
 };
+
+export const setToLocalStorageWrap = (key, value) => {
+  let stringifyValue;
+  if (typeof value !== "string") {
+    stringifyValue = JSON.stringify(value);
+  } else {
+    stringifyValue = value;
+  }
+  localStorage.setItem(key, stringifyValue);
+};
+
+export const getFromLocalStorageWrap = (key) => {
+  return JSON.parse(localStorage.getItem(key));
+};

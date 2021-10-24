@@ -10,21 +10,17 @@
   </head>
   <body>
     <header class="header">
-      <div class="player">
+      <div class="player hidden" id="audio-player-widget">
         <div class="player-controls">
           <button class="play-prev player-icon"></button>
           <button class="play player-icon"></button>
           <button class="play-next player-icon"></button>
         </div>
-
         <div class="audio-player">
           <div class="timeline">
             <div class="progress"></div>
           </div>
           <div class="controls">
-            <!--<div class="play-container">
-              <div class="toggle-play play-mode"></div>
-            </div>-->
             <div class="track-time">
               <div class="current"></div>
               <div class="divider">/</div>
@@ -35,17 +31,15 @@
               <div class="volume-button">
                 <div class="volume volume-icon"></div>
               </div>
-
               <div class="volume-slider">
                 <div class="volume-percentage"></div>
               </div>
             </div>
           </div>
         </div>
-
         <ul class="play-list"></ul>
       </div>
-      <div class="weather">
+      <div class="weather hidden" id="weather-widget">
         <input type="text" class="city" placeholder="[Enter city]" />
         <i class="weather-icon owf"></i>
         <div class="weather-error"></div>
@@ -62,19 +56,21 @@
         <button class="slide-prev slider-icon"></button>
         <button class="slide-next slider-icon"></button>
       </div>
-      <time class="time"></time>
-      <date class="date"></date>
-      <div class="greeting-container">
+      <time class="time hidden" id="time-widget"></time>
+      <date class="date hidden" id="date-widget"></date>
+      <div class="greeting-container hidden" id="greeting-widget">
         <span class="greeting"></span>
         <input type="text" class="user-name" placeholder="[Enter name]" />
       </div>
     </main>
     <footer class="footer">
-      <button class="change-quote"></button>
-      <div>
+      <div class="settings-btn"></div>
+      <div class="quotes-container hidden" id="quotes-widget">
+        <button class="change-quote"></button>
         <div class="quote"></div>
         <div class="author"></div>
       </div>
     </footer>
+    <div class="overlay overlay-hidden"></div>
   </body>
 </html>

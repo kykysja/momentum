@@ -13,8 +13,6 @@ export const setUserNameToLocalStorage = () => {
   localStorage.setItem("user-name", userNameInput.value);
 };
 
-export const getUserNameFromLocalStorage = () => {
-  if (localStorage.getItem("user-name")) {
-    userNameInput.value = localStorage.getItem("user-name");
-  }
+export const useUserNameFromLocalStorage = () => {
+  userNameInput.value = localStorage.getItem("user-name");
 };
