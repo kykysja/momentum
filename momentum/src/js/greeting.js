@@ -6,7 +6,23 @@ const userNameInput = document.querySelector(".user-name");
 export const showGreeting = () => {
   const date = new Date();
   const timeOfDay = getTimeOfDay(date);
-  greetingContainer.textContent = `Good ${timeOfDay}`;
+  let greeting;
+  if (timeOfDay === "утро") {
+    greeting = "Доброе";
+  } else if (timeOfDay === "день" || timeOfDay === "вечер") {
+    greeting = "Добрый";
+  } else if (timeOfDay === "ночи") {
+    greeting = "Доброй";
+  } else {
+    greeting = "Good";
+  }
+
+  greetingContainer.textContent = `${greeting} ${timeOfDay}`;
+
+  const userNameInput = document.querySelector(".user-name");
+  userNameInput.placeholder = `${
+    localStorage.getItem("language") === "en" ? "[Enter name]" : "[Введите имя]"
+  }`;
 };
 
 export const setUserNameToLocalStorage = () => {

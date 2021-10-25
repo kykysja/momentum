@@ -142,6 +142,7 @@ body {
   width: 180px;
   min-height: 180px;
   text-align: left;
+  opacity: 100%;
 }
 
 .weather-error {
@@ -158,6 +159,8 @@ body {
 
 .weather-icon {
   font-size: 44px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .city {
@@ -520,7 +523,7 @@ body {
 #date-widget,
 #greeting-widget,
 #quotes-widget {
-  transition: all ease 0.5s;
+  transition: all ease 0.4s;
 }
 
 .overlay {

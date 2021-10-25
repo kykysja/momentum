@@ -1,46 +1,110 @@
 [
   {
     "text": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
-    "author": "Martin Fowler"
+    "author": "Martin Fowler",
+    "textRu": "Любой дурак может написать код понятный компьютеру. Хорошие программисты пишут код, который понятный людям.",
+    "authorRu": "Мартин Фаулер"
   },
   {
     "text": "First, solve the problem. Then, write the code.",
-    "author": "John Johnson"
+    "author": "John Johnson",
+    "textRu": "Сначала решите проблему. Затем напишите код.",
+    "authorRu": "Джон Джонсон"
   },
   {
     "text": "Experience is the name everyone gives to their mistakes.",
-    "author": "Oscar Wilde"
+    "author": "Oscar Wilde",
+    "textRu": "Опыт - это имя, которое каждый дает своим ошибкам.",
+    "authorRu": "Оскар Уальд"
   },
   {
-    "text": "Before software can be reusable it first has to be usable.",
-    "author": "Ralph Johnson"
+    "text": "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live",
+    "author": "John Woods",
+    "textRu": "Всегда пишите код так, как будто парень, который будет его поддерживать, будет жестоким психопатом, который знает, где вы живете.",
+    "authorRu": "Джон Вудс"
   },
   {
     "text": "Simplicity is the soul of efficiency.",
-    "author": "Austin Freeman"
+    "author": "Austin Freeman",
+    "textRu": "Простота - это душа эффективности.",
+    "authorRu": "Остин Фриман"
   },
   {
     "text": "When to use iterative development? You should use iterative development only on projects that you want to succeed.",
-    "author": "Martin Fowler"
+    "author": "Martin Fowler",
+    "textRu": "Когда использовать итеративную разработку? Вы должны использовать итеративную разработку только в проэктах, в которых хотите добиться успеха.",
+    "authorRu": "Martin Fowler"
   },
   {
     "text": "Code is like humor. When you have to explain it, it’s bad.",
-    "author": "Cory House"
+    "author": "Cory House",
+    "textRu": "Код, - как юмор. Если вам приходится объяснять его, он - плохой.",
+    "authorRu": "Кори Хаус"
   },
   {
     "text": "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.",
-    "author": "Antoine de Saint-Exupery"
+    "author": "Antoine de Saint-Exupery",
+    "textRu": "Совершенство достигается не тогда, когда больше нечего добавить, а когда больше нечего убрать.",
+    "authorRu": "Антуан де Сент-Экзюпери"
   },
   {
     "text": "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday’s code.",
-    "author": "Dan Salomon"
+    "author": "Dan Salomon",
+    "textRu": "Иногда лучше в понедельник остаться в постели , чем тратить остаток недели на отладку кода, написаного в этот понедельник.",
+    "authorRu": "Дэн Саломон"
   },
   {
     "text": "Java is to JavaScript what car is to Carpet.",
-    "author": "Chris Heilmann"
+    "author": "Chris Heilmann",
+    "textRu": "Java имеет такое же отношение к JavaScript как автомобиль к ковровой дорожке.",
+    "authorRu": "Chris Heilmann"
   },
   {
     "text": "Make it work, make it right, make it fast.",
-    "author": "Kent Beck"
+    "author": "Kent Beck",
+    "textRu": "Заставьте это работать, сделайте это правильно, сделайте это быстро.",
+    "authorRu": "Кент Бек"
+  },
+  {
+    "text": "Truth can only be found in one place: the code.",
+    "author": " Robert C. Martin",
+    "textRu": "Истину можно найти только в одном месте, - в коде.",
+    "authorRu": "Роберт Мартин"
+  },
+  {
+    "text": "That's the thing about people who think they hate computers. What they really hate is lousy programmers.",
+    "author": "Larry Niven",
+    "textRu": "Это касается людей, которые думают, что ненавидят компьютеры. На самом деле они ненавидят паршивых программистов.",
+    "authorRu": "Ларри Нивен"
+  },
+  {
+    "text": "Testing leads to failure, and failure leads to understanding.",
+    "author": "Burt Rutan",
+    "textRu": "Тестирование ведет к неудаче, а неудача ведет к пониманию.",
+    "authorRu": "Берт Рутан"
+  },
+  {
+    "text": "The best error message is the one that never shows up.",
+    "author": "Thomas Fuchs",
+    "textRu": "Лучшее сообщение об ошибке - то, которое никогда не появляется.",
+    "authorRu": "Томас Фукс"
+  },
+  {
+    "text": "The most damaging phrase in the language is.. it's always been done this way.",
+    "author": "Grace Hopper",
+    "textRu": "Самая опасная фраза в языке ... так всегда делали.",
+    "authorRu": "Грейс Хоппер"
+  },
+  {
+    "text": "You've baked a really lovely cake, but then you've used dog shit for frosting.",
+    "author": "Steve Jobs",
+    "textRu": "Самая опасная фраза в языке ... так всегда делали.",
+    "authorRu": "Стив Джобс"
+  },
+  {
+    "text": "The most important property of a program is whether it accomplishes the intention of its user.",
+    "author": "C.A.R. Hoare",
+    "textRu": "Наиболее важным свойством программы является то, выполняет ли она намерения своего пользователя.",
+    "authorRu": "Ч. Эн. Р. Хоар"
   }
 ]

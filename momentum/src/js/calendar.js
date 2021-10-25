@@ -14,6 +14,10 @@ export const showDate = () => {
     weekday: "long",
     day: "numeric",
   };
-  const currentDate = date.toLocaleDateString("en-Br", options);
+  const currentLanguage = localStorage.getItem("language");
+  const currentDate =
+    currentLanguage === "en"
+      ? date.toLocaleDateString("en-Br", options)
+      : date.toLocaleDateString("ru", options);
   dateContainer.textContent = `${currentDate}`;
 };

@@ -80,6 +80,7 @@ export const setAudioPlayer = () => {
 
       if (clickedTrackNum === currentAudioNum) {
         isPlay ? pause() : play();
+        trackLength.textContent = getTimeCodeFromNum(sounds[clickedTrackNum].duration);
       } else {
         currentAudioNum = clickedTrackNum;
         audio.src = sounds[currentAudioNum].src;

@@ -22,6 +22,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
+  min-width: 40px;
+  min-height: 41px;
 }
 /* makes the font 33% larger relative to the icon container */
 .owf-lg {

@@ -7,12 +7,17 @@ const changeQuoteBtn = document.querySelector(".change-quote");
 let randomNum;
 
 const showQuote = (data) => {
-  quoteContainer.textContent = `${data[randomNum].text}`;
-  quoteAuthorContainer.textContent = `${data[randomNum].author}`;
+  if (localStorage.getItem("language") === "en") {
+    quoteContainer.textContent = `${data[randomNum].text}`;
+    quoteAuthorContainer.textContent = `${data[randomNum].author}`;
+  } else {
+    quoteContainer.textContent = `${data[randomNum].textRu}`;
+    quoteAuthorContainer.textContent = `${data[randomNum].authorRu}`;
+  }
 };
 
 export async function getQuote() {
-  const newRandomNum = getRandomNum(0, 10);
+  const newRandomNum = getRandomNum(0, 17);
 
   if (newRandomNum === randomNum) {
     getQuote();
@@ -25,5 +30,23 @@ export async function getQuote() {
     showQuote(data);
   }
 }
+
+export const translateQuote = async () => {
+  const quotes = "../assets/quotes.json";
+  const res = await fetch(quotes);
+  const data = await res.json();
+  const currentQuote = document.querySelector(".quote");
+  const currentAuthor = document.querySelector(".author");
+  const currentQuoteIndex = data.findIndex(
+    (el) => el.text === currentQuote.textContent || el.textRu === currentQuote.textContent,
+  );
+  if (localStorage.getItem("language") === "en") {
+    currentQuote.textContent = data[currentQuoteIndex].text;
+    currentAuthor.textContent = data[currentQuoteIndex].author;
+  } else {
+    currentQuote.textContent = data[currentQuoteIndex].textRu;
+    currentAuthor.textContent = data[currentQuoteIndex].authorRu;
+  }
+};
 
 changeQuoteBtn.addEventListener("click", getQuote);

@@ -8,8 +8,10 @@ const humidity = document.querySelector(".humidity");
 export async function getWeather() {
   weatherIcon.className = "weather-icon owf";
 
+  const currentLanguage = localStorage.getItem("language");
+
   if (cityInput.value) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&lang=en&appid=026c2fee3b41cefa7680ac5c131b232d&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&lang=${currentLanguage}&appid=026c2fee3b41cefa7680ac5c131b232d&units=metric`;
     const res = await fetch(url);
 
     if (res.status === 200) {
@@ -17,20 +19,31 @@ export async function getWeather() {
       weatherIcon.classList.add(`owf-${data.weather[0].id}`);
       temperature.textContent = `${Math.round(data.main.temp)}°C`;
       weatherDescription.textContent = data.weather[0].description;
-      wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
-      humidity.textContent = `Humidity: ${Math.round(data.main.humidity)}%`;
+
+      wind.textContent = `${
+        currentLanguage === "en" ? "Wind speed" : "Скорость ветра"
+      }: ${Math.round(data.wind.speed)} m/s`;
+      humidity.textContent = `${currentLanguage === "en" ? "Humidity" : "Влажность"}: ${Math.round(
+        data.main.humidity,
+      )}%`;
     } else if (res.status === 404) {
-      temperature.textContent = "City not found";
+      temperature.textContent = `${
+        currentLanguage === "en" ? "City not found" : "Город не найден"
+      }`;
       weatherDescription.textContent = "";
       wind.textContent = "";
       humidity.textContent = "";
     }
   } else {
-    temperature.textContent = "Nothing to geocode for";
+    temperature.textContent = `${
+      currentLanguage === "en" ? "Nothing to geocode for" : "Нечего геокодировать"
+    }`;
     weatherDescription.textContent = "";
     wind.textContent = "";
     humidity.textContent = "";
   }
+
+  cityInput.placeholder = `${currentLanguage === "en" ? "[Enter city]" : "[Введите город]"}`;
 }
 
 export const setCityToLocalStorage = () => {
@@ -41,7 +54,7 @@ export const useCityFromLocalStorage = () => {
   if (localStorage.getItem("city")) {
     cityInput.value = localStorage.getItem("city");
   } else {
-    cityInput.value = "Minsk";
+    cityInput.value = `${localStorage.getItem("language") === "en" ? "Minsk" : "Минск"}`;
   }
 };
 

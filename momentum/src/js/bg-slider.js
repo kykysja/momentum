@@ -5,12 +5,13 @@ const body = document.body;
 const slideNextBtn = document.querySelector(".slide-next");
 const slidePrevBtn = document.querySelector(".slide-prev");
 
+const img = new Image();
+
 let randomNum = getRandomNum(1, 20);
 
 export const setBackground = () => {
   const randomNumToString = String(randomNum).padStart(2, 0);
 
-  const img = new Image();
   img.src = `https://raw.githubusercontent.com/kykysja/stage1-tasks/assets/images/${getTimeOfDay()}/${randomNumToString}.jpg`;
   img.onload = () => {
     body.style.backgroundImage = `url(${img.src})`;

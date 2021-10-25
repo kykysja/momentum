@@ -2,10 +2,13 @@ export const getTimeOfDay = () => {
   const date = new Date();
   const hours = date.getHours();
 
-  if ((hours >= 6) & (hours < 12)) return "morning";
-  if ((hours >= 12) & (hours < 18)) return "afternoon";
-  if ((hours >= 18) & (hours < 24)) return "evening";
-  return "night";
+  if ((hours >= 6) & (hours < 12))
+    return localStorage.getItem("language") === "en" ? "morning" : "утро";
+  if ((hours >= 12) & (hours < 18))
+    return localStorage.getItem("language") === "en" ? "afternoon" : "день";
+  if ((hours >= 18) & (hours < 24))
+    return localStorage.getItem("language") === "en" ? "evening" : "вечер";
+  return localStorage.getItem("language") === "en" ? "night" : "ночи";
 };
 
 export const getRandomNum = (min, max) => {

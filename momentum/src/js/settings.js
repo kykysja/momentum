@@ -1,13 +1,26 @@
+import { showDate } from "./calendar";
 import { getFromLocalStorageWrap, setToLocalStorageWrap } from "./helpers";
+import { translateQuote } from "./quotes-widget";
+import { getWeather } from "./weather";
 
 const footer = document.querySelector(".footer");
 const settingsBtn = document.querySelector(".settings-btn");
 const overlay = document.querySelector(".overlay");
+const weatherContainer = document.querySelector(".weather");
+const dateContainer = document.querySelector(".date");
+const greetingContainer = document.querySelector(".greeting-container");
 
 const settingsObj = {
   language: ["en", "ru"],
   photoSource: ["github"],
-  widgets: ["time", "date", "greeting", "quotes", "weather", "audio-player"],
+  widgets: [
+    { en: "time", ru: "время" },
+    { en: "date", ru: "дата" },
+    { en: "greeting", ru: "приветствие" },
+    { en: "quotes", ru: "цитаты" },
+    { en: "weather", ru: "погода" },
+    { en: "audio-player", ru: "аудио плеер" },
+  ],
 };
 
 const createLanguageElemList = () => {
@@ -26,8 +39,12 @@ const createWidgetElemList = () => {
   let widgetElemList = "";
 
   for (let i = 0; i < settingsObj.widgets.length; i++) {
-    const input = `<input class="settings-checkbox" type="checkbox" name="widgets" id="${settingsObj.widgets[i]}">`;
-    const label = `<label class="settings-label checkbox-label" for="${settingsObj.widgets[i]}">${settingsObj.widgets[i]}<label>`;
+    let widgetName;
+    localStorage.getItem("language") === "en"
+      ? (widgetName = settingsObj.widgets[i].en)
+      : (widgetName = settingsObj.widgets[i].ru);
+    const input = `<input class="settings-checkbox" type="checkbox" name="widgets" id="${settingsObj.widgets[i].en}">`;
+    const label = `<label class="settings-label checkbox-label" for="${settingsObj.widgets[i].en}">${widgetName}<label>`;
 
     widgetElemList += `<div class="list-item">${input + label}</div>`;
   }
@@ -38,11 +55,15 @@ export const setSettings = () => {
   const settingsContainer = document.createElement("div");
   settingsContainer.className = "settings-container";
   settingsContainer.innerHTML = `
-    <div class="settings-title"><span>Language</span></div>
+    <div class="settings-title language-title"><span>${
+      localStorage.getItem("language") === "en" ? "Language" : "Язык"
+    }</span></div>
     <div class="setting-wrap">
       ${createLanguageElemList()}
     </div>
-    <div class="settings-title"><span>Show</span></div>
+    <div class="settings-title widgets-title"><span>${
+      localStorage.getItem("language") === "en" ? "Show" : "Показать"
+    }</span></div>
     <div class="setting-wrap widgets-wrap">
       ${createWidgetElemList()}
     </div>
@@ -54,6 +75,7 @@ export const setSettings = () => {
     overlay.classList.toggle("overlay-hidden");
   };
   settingsBtn.addEventListener("click", openSettings);
+
   overlay.addEventListener("click", () => {
     overlay.classList.add("overlay-hidden");
     settingsContainer.classList.remove("opened");
@@ -61,6 +83,49 @@ export const setSettings = () => {
 
   const widgetElemList = document.querySelectorAll(".settings-checkbox");
   widgetElemList.forEach((el) => el.addEventListener("change", displayHideWidget));
+
+  const addAnimation = () => {
+    weatherContainer.classList.remove("hidden");
+    dateContainer.classList.remove("hidden");
+    greetingContainer.classList.remove("hidden");
+  };
+
+  const handleLanguageChange = () => {
+    setLanguageToLocalStorage();
+    translateQuote();
+
+    weatherContainer.classList.add("hidden");
+    dateContainer.classList.add("hidden");
+    greetingContainer.classList.add("hidden");
+
+    const languageTitle = document.querySelector(".language-title");
+    const widgetsTitle = document.querySelector(".widgets-title");
+    const currentLanguage = localStorage.getItem("language");
+    const cityInput = document.querySelector(".city");
+    const userNameInput = document.querySelector(".user-name");
+
+    languageTitle.textContent = `${currentLanguage === "en" ? "Language" : "Язык"}`;
+    widgetsTitle.textContent = `${currentLanguage === "en" ? "Show" : "Показать"}`;
+    cityInput.placeholder = `${currentLanguage === "en" ? "[Enter city]" : "[Введите город]"}`;
+    userNameInput.placeholder = `${currentLanguage === "en" ? "[Enter name]" : "[Введите имя]"}`;
+
+    for (let i = 0; i < settingsObj.widgets.length; i++) {
+      let widgetName;
+      currentLanguage === "en"
+        ? (widgetName = settingsObj.widgets[i].en)
+        : (widgetName = settingsObj.widgets[i].ru);
+      document.querySelector(`#${settingsObj.widgets[i].en}`).nextElementSibling.textContent =
+        widgetName;
+    }
+
+    setTimeout(() => {
+      getWeather();
+      addAnimation();
+    }, 300);
+  };
+
+  const radoiLanguageInputs = document.querySelectorAll(".settings-radio-btn");
+  radoiLanguageInputs.forEach((input) => input.addEventListener("change", handleLanguageChange));
 };
 
 export const setLanguageToLocalStorage = () => {
