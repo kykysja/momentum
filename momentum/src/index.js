@@ -11,9 +11,11 @@ import { getQuote } from "./js/quotes-widget";
 import { setAudioPlayer } from "./js/audio-player";
 import {
   setLanguageToLocalStorage,
+  setPhotoSourceToLocalStorage,
   setSettings,
   setWidgetsToLocalStorage,
   useLanguageFromLocalStorage,
+  usePhotoSourceFromLocalStorage,
   useWidgetsFromLocalStorage,
 } from "./js/settings";
 
@@ -22,6 +24,7 @@ const setDataToLocalStorage = () => {
   setCityToLocalStorage();
   setLanguageToLocalStorage();
   setWidgetsToLocalStorage();
+  setPhotoSourceToLocalStorage();
 };
 
 const getDataFromLocalStorage = () => {
@@ -29,6 +32,7 @@ const getDataFromLocalStorage = () => {
   useCityFromLocalStorage();
   useLanguageFromLocalStorage();
   useWidgetsFromLocalStorage();
+  usePhotoSourceFromLocalStorage();
 };
 
 const handleWindowLoad = () => {
