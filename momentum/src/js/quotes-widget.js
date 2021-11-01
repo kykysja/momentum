@@ -7,7 +7,7 @@ const changeQuoteBtn = document.querySelector(".change-quote");
 let randomNum;
 
 const showQuote = (data) => {
-  if (localStorage.getItem("language") === "en") {
+  if (localStorage.getItem("app-language") === "en") {
     quoteContainer.textContent = `${data[randomNum].text}`;
     quoteAuthorContainer.textContent = `${data[randomNum].author}`;
   } else {
@@ -40,7 +40,7 @@ export const translateQuote = async () => {
   const currentQuoteIndex = data.findIndex(
     (el) => el.text === currentQuote.textContent || el.textRu === currentQuote.textContent,
   );
-  if (localStorage.getItem("language") === "en") {
+  if (localStorage.getItem("app-language") === "en") {
     currentQuote.textContent = data[currentQuoteIndex].text;
     currentAuthor.textContent = data[currentQuoteIndex].author;
   } else {

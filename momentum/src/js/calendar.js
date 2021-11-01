@@ -14,7 +14,7 @@ export const showDate = () => {
     weekday: "long",
     day: "numeric",
   };
-  const currentLanguage = localStorage.getItem("language");
+  const currentLanguage = localStorage.getItem("app-language");
   const currentDate =
     currentLanguage === "en"
       ? date.toLocaleDateString("en-Br", options)

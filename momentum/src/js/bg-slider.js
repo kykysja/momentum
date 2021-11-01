@@ -1,6 +1,5 @@
 import { getTimeOfDay } from "./helpers";
 import { getRandomNum } from "./helpers";
-import { getLinkToImage } from "./image-api";
 
 const body = document.body;
 const slideNextBtn = document.querySelector(".slide-next");
@@ -25,9 +24,32 @@ export const setBackground = () => {
     img.onload = () => {
       body.style.backgroundImage = `url(${img.src})`;
     };
-  } else if (photoSource === "unsplash") {
+  } else {
     getLinkToImage();
   }
+};
+
+const getLinkToImage = async () => {
+  const category = localStorage.getItem("photoCategory");
+  let url;
+  localStorage.getItem("photoSource") === "unsplash"
+    ? (url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${
+        category ? category : "nature"
+      }&client_id=fGlV0HC45V7V87jE1wKsTowzFiC9xI6nSVz7F9ll-EY`)
+    : (url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=735d81808a1a2dd67820e1996584b99f&tags=${
+        category ? category : "nature"
+      }&extras=url_l&per_page=50&format=json&nojsoncallback=1`);
+  const res = await fetch(url);
+  const data = await res.json();
+
+  img.src =
+    localStorage.getItem("photoSource") === "unsplash"
+      ? data.urls.regular
+      : data.photos.photo[getRandomNum(0, 49)].url_l;
+
+  img.onload = () => {
+    body.style.backgroundImage = `url(${img.src})`;
+  };
 };
 
 const showSlideNext = () => {

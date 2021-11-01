@@ -8,10 +8,12 @@ const humidity = document.querySelector(".humidity");
 export async function getWeather() {
   weatherIcon.className = "weather-icon owf";
 
-  const currentLanguage = localStorage.getItem("language");
+  const currentLanguage = localStorage.getItem("app-language");
+  const currentCity = localStorage.getItem("city-weather");
+  cityInput.value = currentCity;
 
-  if (cityInput.value) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&lang=${currentLanguage}&appid=026c2fee3b41cefa7680ac5c131b232d&units=metric`;
+  if (currentCity) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&lang=${currentLanguage}&appid=026c2fee3b41cefa7680ac5c131b232d&units=metric`;
     const res = await fetch(url);
 
     if (res.status === 200) {
@@ -46,16 +48,25 @@ export async function getWeather() {
   cityInput.placeholder = `${currentLanguage === "en" ? "[Enter city]" : "[Введите город]"}`;
 }
 
-export const setCityToLocalStorage = () => {
-  localStorage.setItem("city", cityInput.value);
-};
-
-export const useCityFromLocalStorage = () => {
-  if (localStorage.getItem("city")) {
-    cityInput.value = localStorage.getItem("city");
-  } else {
-    cityInput.value = `${localStorage.getItem("language") === "en" ? "Minsk" : "Минск"}`;
+export const setBasicCityToLocalStorage = () => {
+  if (!localStorage.getItem("city-weather")) {
+    localStorage.setItem("city-weather", "Minsk");
   }
 };
 
-cityInput.addEventListener("change", getWeather);
+export const setCityToLocalStorage = () => {
+  localStorage.setItem("city-weather", cityInput.value);
+};
+
+export const useCityFromLocalStorage = () => {
+  if (localStorage.getItem("city-weather")) {
+    cityInput.value = localStorage.getItem("city-weather");
+  } else {
+    cityInput.value = "Minsk";
+  }
+};
+
+cityInput.addEventListener("change", () => {
+  setCityToLocalStorage();
+  getWeather();
+});

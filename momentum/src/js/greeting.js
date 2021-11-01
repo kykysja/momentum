@@ -19,16 +19,15 @@ export const showGreeting = () => {
 
   greetingContainer.textContent = `${greeting} ${timeOfDay}`;
 
-  const userNameInput = document.querySelector(".user-name");
   userNameInput.placeholder = `${
-    localStorage.getItem("language") === "en" ? "[Enter name]" : "[Введите имя]"
+    localStorage.getItem("app-language") === "en" ? "[Enter name]" : "[Введите имя]"
   }`;
+};
+
+export const showUserName = () => {
+  userNameInput.value = localStorage.getItem("user-name");
 };
 
 export const setUserNameToLocalStorage = () => {
   localStorage.setItem("user-name", userNameInput.value);
-};
-
-export const useUserNameFromLocalStorage = () => {
-  userNameInput.value = localStorage.getItem("user-name");
 };
